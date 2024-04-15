@@ -1,16 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, inject } from '@angular/core';
 import { Todo } from '../model/todo';
 import { LoggerService } from '../../services/logger.service';
+import { uuidInjectionToken } from 'src/app/injection tokens/uuid.injection-token';
 
 let n = 1;
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root', //Angular 6
 })
 export class TodoService {
   private todos: Todo[] = [];
+  private uuid = inject(uuidInjectionToken);
   constructor(private loggerService: LoggerService) {}
-
   /**
    * elle retourne la liste des todos
    *
@@ -27,6 +28,7 @@ export class TodoService {
    *
    */
   addTodo(todo: Todo): void {
+    todo.id = this.uuid();
     this.todos.push(todo);
   }
 
@@ -50,5 +52,18 @@ export class TodoService {
    */
   logTodos() {
     this.loggerService.logger(this.todos);
+  }
+
+ /**
+  *
+  * @param x
+  * @param y
+  * @returns
+  */
+  division(x: number, y: number): number {
+    if (!y) {
+      throw new Error('division par zero');
+    }
+    return x / y;
   }
 }

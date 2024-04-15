@@ -5,8 +5,8 @@
       "name": "ng serve",
       "type": "chrome",
       "request": "launch",
-      "preLaunchTask": "npm: start",
-      "url": "http://localhost:4200",
+      "preLaunchTask": "npm: start:debug",
+      "url": "http://localhost:4201",
       "webRoot": "${workspaceFolder}"
     },
     {
@@ -30,5 +30,3 @@
     }
   ]
 }
-
-//

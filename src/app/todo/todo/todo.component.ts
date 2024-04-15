@@ -17,6 +17,7 @@ export class TodoComponent {
   addTodo() {
     this.todoService.addTodo(this.todo);
     this.todo = new Todo();
+    // this.todoService.division()
   }
 
   deleteTodo(todo: Todo) {

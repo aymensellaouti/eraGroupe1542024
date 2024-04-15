@@ -1,3 +1,6 @@
 export class Todo {
-  constructor(public name = '', public content = '') {}
+  public id: string;
+  constructor(id = '', public name = '', public content = '') {
+    this.id = id;
+  }
 }

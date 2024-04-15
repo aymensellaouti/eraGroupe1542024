@@ -47,6 +47,17 @@ import { RhComponent } from './optimizationPattern/rh/rh.component';
 import { UserListComponent } from './optimizationPattern/user-list/user-list.component';
 import { ProductsComponent } from './products/products.component';
 
+import { TodoService } from './todo/service/todo.service';
+import { CvService } from './cv/services/cv.service';
+import { CONSTANTES } from 'src/config/const.config';
+import { FakeCvService } from './cv/services/fake-cv.service';
+import { LoggerService } from './services/logger.service';
+import { OtherLoggerService } from './services/other-logger.service';
+import { WeekTodosComponent } from './todo/week-todos/week-todos.component';
+import { uuidInjectionToken } from './injection tokens/uuid.injection-token';
+
+import {v4 as uuidv4} from 'uuid';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +94,8 @@ import { ProductsComponent } from './products/products.component';
     TestHttpComponent,
     RhComponent,
     UserListComponent,
-    ProductsComponent
+    ProductsComponent,
+    WeekTodosComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,7 +105,39 @@ import { ProductsComponent } from './products/products.component';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [AuthInterceptorProvider],
+  providers: [
+    // Provide permet de spécifier le Token qui va identifer la dépendance
+    // {
+    //   provide: FirstInjectionToken,
+    //   useFactory: todoProviderFactory,
+    //   deps: [LoggerService]
+    // },
+    // {
+    //   provide: TodoService,
+    //   useClass: TodoService
+    // },
+    // TodoService,
+    TodoService,
+    AuthInterceptorProvider,
+    {
+      provide: CvService,
+      useClass: CONSTANTES.env == 'production' ? CvService : FakeCvService,
+    },
+    {
+      provide: 'LOGGER',
+      useClass: LoggerService,
+      multi: true,
+    },
+    {
+      provide: 'LOGGER',
+      useClass: OtherLoggerService,
+      multi: true,
+    },
+    {
+      provide: uuidInjectionToken,
+      useValue: uuidv4 as () => string
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
