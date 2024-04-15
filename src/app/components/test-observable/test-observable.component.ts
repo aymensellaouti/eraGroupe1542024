@@ -20,20 +20,25 @@ export class TestObservableComponent implements OnDestroy {
         observer.next(i--);
       }, 1000);
     });
+    // 1 2 3 4 5
+    // Une inscription
     this.subscriptions.push(this.firstObservable$.subscribe((val) => {
       console.log(val);
     }));
     setTimeout(
       () => {
+        // Une seconde inscription
           this.subscriptions.push(
+            // 1 2 3 4 5
               this.firstObservable$
-              .pipe(
-        map( element => element  * 3),
-        filter( element => element % 2 == 0)
-              )
+               .pipe(
+        // map( element => element  * 3),
+                   filter( element => element % 2 == 0)
+                  //  2 4
+               )
               .subscribe({
-        next: (value) => this.toaster.info('' + value),
-        complete: () => this.toaster.success('Fin du Game :)')
+                  next: (value) => this.toaster.info('' + value),
+                  complete: () => this.toaster.success('Fin du Game :)')
               }
               ));
         }, 1500);

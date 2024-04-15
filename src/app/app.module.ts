@@ -57,6 +57,8 @@ import { WeekTodosComponent } from './todo/week-todos/week-todos.component';
 import { uuidInjectionToken } from './injection tokens/uuid.injection-token';
 
 import {v4 as uuidv4} from 'uuid';
+import { OfFromComponent } from './rxjs/of-from/of-from.component';
+import { SliderComponent } from './rxjs/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +98,8 @@ import {v4 as uuidv4} from 'uuid';
     UserListComponent,
     ProductsComponent,
     WeekTodosComponent,
+    OfFromComponent,
+    SliderComponent,
   ],
   imports: [
     BrowserModule,

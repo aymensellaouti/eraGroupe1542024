@@ -17,6 +17,9 @@ export class TodoComponent {
   addTodo() {
     this.todoService.addTodo(this.todo);
     this.todo = new Todo();
+    return 5;
+    // setTimeout(() => console.log('1'), 1500);
+    // console.log('2');
     // this.todoService.division()
   }
 
