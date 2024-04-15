@@ -4,6 +4,7 @@ import { LoggerService } from "../../services/logger.service";
 import { ToastrService } from "ngx-toastr";
 import { CvService } from "../services/cv.service";
 import { EMPTY, Observable, catchError, of } from "rxjs";
+import { TodoService } from "src/app/todo/service/todo.service";
 @Component({
   selector: 'app-cv',
   templateUrl: './cv.component.html',
@@ -19,6 +20,7 @@ export class CvComponent {
     private logger: LoggerService,
     private toastr: ToastrService,
     private cvService: CvService,
+    private todoService: TodoService,
     @Inject('LOGGER') private loggers: LoggerService[]
   ) {
     this.cvService.getCvs().subscribe({
@@ -38,5 +40,6 @@ export class CvComponent {
   }
   onForwardCv(cv: Cv) {
     this.selectedCv = cv;
+    this.todoService.logTodos();
   }
 }
