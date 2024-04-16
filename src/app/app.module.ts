@@ -59,6 +59,7 @@ import { uuidInjectionToken } from './injection tokens/uuid.injection-token';
 import {v4 as uuidv4} from 'uuid';
 import { OfFromComponent } from './rxjs/of-from/of-from.component';
 import { SliderComponent } from './rxjs/slider/slider.component';
+import { AutocompleteComponent } from './cv/autocomplete/autocomplete.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { SliderComponent } from './rxjs/slider/slider.component';
     WeekTodosComponent,
     OfFromComponent,
     SliderComponent,
+    AutocompleteComponent,
   ],
   imports: [
     BrowserModule,
