@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cv } from '../model/cv';
-import {  Observable } from 'rxjs';
+import {  Observable, Subject, catchError, delay, retry } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { API } from '../../../config/api.config';
 
@@ -8,6 +8,8 @@ import { API } from '../../../config/api.config';
   providedIn: 'root',
 })
 export class CvService {
+  #selectCvSubject = new Subject<Cv>();
+  selectCv$ = this.#selectCvSubject.asObservable();
   private cvs: Cv[] = [];
   constructor(private http: HttpClient) {
     this.cvs = [
@@ -37,7 +39,12 @@ export class CvService {
   getCvs(): Observable<Cv[]> {
     // Observable Froid de l'API
     // Récupérer la réponser Http et il va la rejouer pour chaque
-    return this.http.get<Cv[]>(API.cv);
+    return this.http.get<Cv[]>(API.cv).pipe(
+      retry({
+        count: 4,
+        delay: 3000
+      }),
+    );
   }
 
   /**
@@ -93,6 +100,11 @@ export class CvService {
       return true;
     }
     return false;
+  }
+
+
+  selectCv(cv: Cv): void {
+    this.#selectCvSubject.next(cv);
   }
 
 }

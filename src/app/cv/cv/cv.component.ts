@@ -1,4 +1,4 @@
-import { Component, Inject } from "@angular/core";
+import { Component, Inject, Input } from "@angular/core";
 import { Cv } from "../model/cv";
 import { LoggerService } from "../../services/logger.service";
 import { ToastrService } from "ngx-toastr";
@@ -11,11 +11,18 @@ import { TodoService } from "src/app/todo/service/todo.service";
   styleUrls: ['./cv.component.css'],
 })
 export class CvComponent {
-  cvs: Cv[] = [];
-  selectedCv: Cv | null = null;
+  @Input() defaultColor = 'red';
+  color = '';
+  cvs$: Observable<Cv[]> = this.cvService.getCvs().pipe(
+    catchError(() => {
+          this.toastr.error(`
+          Attention!! Les données sont fictives, problème avec le serveur.
+          Veuillez contacter l'admin.`);
+          return of(this.cvService.getFakeCvs());
+  }));
+  selectedCv$ = this.cvService.selectCv$;
   /*   selectedCv: Cv | null = null; */
   date = new Date();
-
   constructor(
     private logger: LoggerService,
     private toastr: ToastrService,
@@ -23,23 +30,12 @@ export class CvComponent {
     private todoService: TodoService,
     @Inject('LOGGER') private loggers: LoggerService[]
   ) {
-    this.cvService.getCvs().subscribe({
-      next: (cvs) => {
-        this.cvs = cvs;
-      },
-      error: () => {
-        this.cvs = this.cvService.getFakeCvs();
-        this.toastr.error(`
-          Attention!! Les données sont fictives, problème avec le serveur.
-          Veuillez contacter l'admin.`);
-      },
-    });
     this.logger.logger('je suis le cvComponent');
     this.toastr.info('Bienvenu dans notre CvTech');
-    loggers.forEach(logger => logger.logger('tester'));
+    loggers.forEach((logger) => logger.logger('tester'));
+
   }
-  onForwardCv(cv: Cv) {
-    this.selectedCv = cv;
-    this.todoService.logTodos();
+  ngOnInit(){
+    this.color = this.defaultColor;
   }
 }

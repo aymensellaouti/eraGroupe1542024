@@ -13,6 +13,7 @@ import { EMPTY, Observable, catchError, map, tap } from 'rxjs';
   styleUrls: ['./details-cv.component.css'],
 })
 export class DetailsCvComponent implements OnInit {
+  // Programmation Declarative
   cv$: Observable<Cv> = this.cvService.getCvById(
     +this.activatedRoute.snapshot.params['id']
   ).pipe(

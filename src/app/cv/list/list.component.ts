@@ -7,6 +7,8 @@ import { Cv } from '../model/cv';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent {
+  // Le ListeComponent : Affiche une liste
+
   @Input() cvs: Cv[] | null = [];
-  @Output() forwardCv = new EventEmitter<Cv>();
+  // @Output() forwardCv = new EventEmitter<Cv>();
 }
