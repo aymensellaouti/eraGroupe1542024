@@ -10,16 +10,19 @@ export class OfFromComponent {
   tab = [1,2,3];
 
   constructor() {
+    // [1,2,3]
     of(this.tab).subscribe({
       next: (x) => console.log('[of : ]' + x),
       complete: () => console.log('OF COMPLETED')
     });
+    // 1, 2, 3
     from(this.tab)
     .pipe(take(2))
     .subscribe({
       next: (x) => console.log('[from : ]' + x),
       complete: () => console.log('from COMPLETED'),
     });
+    //
     timer(1000).subscribe((x) => console.log(x));
     timer(0,1000).subscribe((x) => console.log(x));
     interval();

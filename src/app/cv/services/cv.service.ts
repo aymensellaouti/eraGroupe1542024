@@ -35,6 +35,8 @@ export class CvService {
    *
    */
   getCvs(): Observable<Cv[]> {
+    // Observable Froid de l'API
+    // Récupérer la réponser Http et il va la rejouer pour chaque
     return this.http.get<Cv[]>(API.cv);
   }
 

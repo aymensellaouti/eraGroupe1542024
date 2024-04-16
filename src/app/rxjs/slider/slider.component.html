@@ -1,8 +1,17 @@
 <p>slider works!</p>
-
+<form [formGroup]="form">
+  <input type="text" formControlName="search">
+</form>
 <img
   class="rounded-circle"
   src="assets/images/{{images$ | async}}" alt="slider" [ngStyle]="{
+  width: '150px',
+  heigth: '150px',
+}">
+
+<img
+  class="rounded-circle"
+  src="{{images2$ | async}}" alt="slider" [ngStyle]="{
   width: '150px',
   heigth: '150px',
 }">
