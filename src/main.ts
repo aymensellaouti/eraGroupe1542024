@@ -9,7 +9,7 @@ import { provideHttpClient } from '@angular/common/http';
 
 
 platformBrowserDynamic().bootstrapModule(AppModule, {
-  ngZone: 'noop'
+  // ngZone: 'noop'
 })
   .catch(err => console.error(err));
 
