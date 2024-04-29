@@ -29,9 +29,7 @@ const routes: Route[] = [
     path: "",
     component: FrontComponent,
     children: [
-      { path: "todo", component: TodoComponent },
-      { path: "todo/week", component: WeekTodosComponent },
-      { path: "word", component: MiniWordComponent },
+           { path: "word", component: MiniWordComponent },
     ],
   },
   {
@@ -39,7 +37,7 @@ const routes: Route[] = [
     component: AdminComponent,
     children: [{ path: "color", component: ColorComponent }],
   },
-  { path: "**", component: NF404Component },
+  // { path: "**", component: NF404Component },
 ];
 
 @NgModule({

@@ -22,7 +22,6 @@ import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
 import { NgstyleComponent } from './directives/ngstyle/ngstyle.component';
 import { MiniWordComponent } from './directives/mini-word/mini-word.component';
 import { NgclassComponent } from './directives/ngclass/ngclass.component';
-import { TodoComponent } from './todo/todo/todo.component';
 
 import { HighlightDirective } from './directives/highlight.directive';
 import { RainbowDirective } from './directives/rainbow.directive';
@@ -53,13 +52,13 @@ import { CONSTANTES } from 'src/config/const.config';
 import { FakeCvService } from './cv/services/fake-cv.service';
 import { LoggerService } from './services/logger.service';
 import { OtherLoggerService } from './services/other-logger.service';
-import { WeekTodosComponent } from './todo/week-todos/week-todos.component';
 import { uuidInjectionToken } from './injection tokens/uuid.injection-token';
 
 import {v4 as uuidv4} from 'uuid';
 import { OfFromComponent } from './rxjs/of-from/of-from.component';
 import { SliderComponent } from './rxjs/slider/slider.component';
 import { AutocompleteComponent } from './cv/autocomplete/autocomplete.component';
+import { TodoModule } from './todo/todo.module';
 
 @NgModule({
   declarations: [
@@ -86,7 +85,7 @@ import { AutocompleteComponent } from './cv/autocomplete/autocomplete.component'
     HighlightDirective,
     RainbowDirective,
     Btc2usdPipe,
-    TodoComponent,
+
     NavbarComponent,
     FrontComponent,
     AdminComponent,
@@ -98,7 +97,7 @@ import { AutocompleteComponent } from './cv/autocomplete/autocomplete.component'
     RhComponent,
     UserListComponent,
     ProductsComponent,
-    WeekTodosComponent,
+
     OfFromComponent,
     SliderComponent,
     AutocompleteComponent,
@@ -110,7 +109,8 @@ import { AutocompleteComponent } from './cv/autocomplete/autocomplete.component'
     ToastrModule.forRoot(), // ToastrModule added
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TodoModule
   ],
   providers: [
     // Provide permet de spécifier le Token qui va identifer la dépendance
