@@ -51,6 +51,11 @@ import { OfFromComponent } from './rxjs/of-from/of-from.component';
 import { SliderComponent } from './rxjs/slider/slider.component';
 import { NotStandaloneComponent } from './standalone/not-standalone/not-standalone.component';
 import { FirstStandaloneComponent } from "./standalone/first-standalone/first-standalone.component";
+import { OnPushComponent } from './changeDetection/on-push/on-push.component';
+import { OnPushFilsComponent } from './changeDetection/on-push-fils/on-push-fils.component';
+import { UsersComponent } from './optimizationPattern/users/users.component';
+import { AddUserComponent } from './optimizationPattern/add-user/add-user.component';
+import { FiboPipe } from './optimizationPattern/pipe/fibo.pipe';
 
 
 @NgModule({
@@ -82,6 +87,11 @@ import { FirstStandaloneComponent } from "./standalone/first-standalone/first-st
         OfFromComponent,
         SliderComponent,
         NotStandaloneComponent,
+        OnPushComponent,
+        OnPushFilsComponent,
+        UsersComponent,
+        AddUserComponent,
+        FiboPipe,
     ],
     providers: [
         // Provide permet de spécifier le Token qui va identifer la dépendance

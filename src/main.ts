@@ -8,7 +8,9 @@ import { FirstComponent } from './app/components/first/first.component';
 import { provideHttpClient } from '@angular/common/http';
 
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+platformBrowserDynamic().bootstrapModule(AppModule, {
+  ngZone: 'noop'
+})
   .catch(err => console.error(err));
 
 
