@@ -5,8 +5,8 @@ import { WeekTodosComponent } from "./week-todos/week-todos.component";
 
 
 export const TODO_ROUTES: Routes = [
-  { path: 'todo', component: TodoComponent },
-  { path: 'todo/week', component: WeekTodosComponent },
+  { path: '', component: TodoComponent },
+  { path: 'week', component: WeekTodosComponent },
 ];
 
 @NgModule({
