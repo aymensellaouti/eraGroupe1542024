@@ -11,36 +11,34 @@ import { RhComponent } from "./optimizationPattern/rh/rh.component";
 import { ProductsComponent } from "./products/products.component";
 import { CustomPreloadingStrategy } from "./Preloading Strategies/custom.preloading-strategy";
 
-const routes: Route[] = [
-  { path: "login", component: LoginComponent },
-  { path: "rh", component: RhComponent },
-  { path: "products", component: ProductsComponent },
+export const routes: Route[] = [
+  { path: 'login', component: LoginComponent },
+  { path: 'rh', component: RhComponent },
+  { path: 'products', component: ProductsComponent },
+  {
+    path: 'standalone',
+    loadComponent: () => import('./standalone/first-standalone/first-standalone.component').then((m) => m.FirstStandaloneComponent),
+  },
   {
     path: 'todo',
-    loadChildren: () => import('./todo/todo.module').then(
-      m => m.TodoModule
-    )
+    loadChildren: () => import('./todo/todo.module').then((m) => m.TodoModule),
   },
   {
     path: 'cv',
     data: {
-      preload: true
+      preload: true,
     },
-    loadChildren: () => import('./cv/cv.module').then(
-      m => m.CvModule
-    )
-  },
-    {
-    path: "",
-    component: FrontComponent,
-    children: [
-           { path: "word", component: MiniWordComponent },
-    ],
+    loadChildren: () => import('./cv/cv.module').then((m) => m.CvModule),
   },
   {
-    path: "admin",
+    path: '',
+    component: FrontComponent,
+    children: [{ path: 'word', component: MiniWordComponent }],
+  },
+  {
+    path: 'admin',
     component: AdminComponent,
-    children: [{ path: "color", component: ColorComponent }],
+    children: [{ path: 'color', component: ColorComponent }],
   },
   // { path: "**", component: NF404Component },
 ];

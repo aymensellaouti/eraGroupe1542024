@@ -49,85 +49,82 @@ import { uuidInjectionToken } from './injection tokens/uuid.injection-token';
 import {v4 as uuidv4} from 'uuid';
 import { OfFromComponent } from './rxjs/of-from/of-from.component';
 import { SliderComponent } from './rxjs/slider/slider.component';
-import { TodoModule } from './todo/todo.module';
-import { CvModule } from './cv/cv.module';
+import { NotStandaloneComponent } from './standalone/not-standalone/not-standalone.component';
+import { FirstStandaloneComponent } from "./standalone/first-standalone/first-standalone.component";
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FirstComponent,
-    SecondComponent,
-    ColorComponent,
-    TwoComponent,
-
-    PereComponent,
-    FilsComponent,
-
-    NgstyleComponent,
-    MiniWordComponent,
-    NgclassComponent,
-    HighlightDirective,
-    RainbowDirective,
-    Btc2usdPipe,
-
-    NavbarComponent,
-    FrontComponent,
-    AdminComponent,
-    NF404Component,
-    TestFormComponent,
-    LoginComponent,
-    TestObservableComponent,
-    TestHttpComponent,
-    RhComponent,
-    UserListComponent,
-    ProductsComponent,
-
-    OfFromComponent,
-    SliderComponent,
-
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule
-  ],
-  providers: [
-    // Provide permet de spécifier le Token qui va identifer la dépendance
-    // {
-    //   provide: FirstInjectionToken,
-    //   useFactory: todoProviderFactory,
-    //   deps: [LoggerService]
-    // },
-    // {
-    //   provide: TodoService,
-    //   useClass: TodoService
-    // },
-    // TodoService,
-    TodoService,
-    AuthInterceptorProvider,
-    {
-      provide: CvService,
-      useClass: CONSTANTES.env == 'production' ? CvService : FakeCvService,
-    },
-    {
-      provide: 'LOGGER',
-      useClass: LoggerService,
-      multi: true,
-    },
-    {
-      provide: 'LOGGER',
-      useClass: OtherLoggerService,
-      multi: true,
-    },
-    {
-      provide: uuidInjectionToken,
-      useValue: uuidv4 as () => string
-    },
-  ],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        FirstComponent,
+        SecondComponent,
+        ColorComponent,
+        TwoComponent,
+        PereComponent,
+        FilsComponent,
+        NgstyleComponent,
+        MiniWordComponent,
+        NgclassComponent,
+        HighlightDirective,
+        RainbowDirective,
+        Btc2usdPipe,
+        NavbarComponent,
+        FrontComponent,
+        AdminComponent,
+        NF404Component,
+        TestFormComponent,
+        LoginComponent,
+        TestObservableComponent,
+        TestHttpComponent,
+        RhComponent,
+        UserListComponent,
+        ProductsComponent,
+        OfFromComponent,
+        SliderComponent,
+        NotStandaloneComponent,
+    ],
+    providers: [
+        // Provide permet de spécifier le Token qui va identifer la dépendance
+        // {
+        //   provide: FirstInjectionToken,
+        //   useFactory: todoProviderFactory,
+        //   deps: [LoggerService]
+        // },
+        // {
+        //   provide: TodoService,
+        //   useClass: TodoService
+        // },
+        // TodoService,
+        TodoService,
+        AuthInterceptorProvider,
+        {
+            provide: CvService,
+            useClass: CONSTANTES.env == 'production' ? CvService : FakeCvService,
+        },
+        {
+            provide: 'LOGGER',
+            useClass: LoggerService,
+            multi: true,
+        },
+        {
+            provide: 'LOGGER',
+            useClass: OtherLoggerService,
+            multi: true,
+        },
+        {
+            provide: uuidInjectionToken,
+            useValue: uuidv4 as () => string
+        },
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        BrowserAnimationsModule, // required animations module
+        ToastrModule.forRoot(), // ToastrModule added
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ]
 })
 export class AppModule {}

@@ -10,7 +10,7 @@ import { ItemComponent } from './item/item.component';
 import { ListComponent } from './list/list.component';
 import { DefaultImagePipe } from './pipes/default-image.pipe';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CvRoutingModule } from './cv-routing.module';
 
 
@@ -31,7 +31,8 @@ import { CvRoutingModule } from './cv-routing.module';
   imports: [
     CommonModule,
     FormsModule,
-    CvRoutingModule
+    CvRoutingModule,
+    ReactiveFormsModule
   ],
 })
 export class CvModule {}

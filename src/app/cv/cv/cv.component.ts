@@ -9,6 +9,8 @@ import { TodoService } from "src/app/todo/service/todo.service";
   selector: 'app-cv',
   templateUrl: './cv.component.html',
   styleUrls: ['./cv.component.css'],
+  // standalone: true,
+  // imports: []
 })
 export class CvComponent {
   @Input() defaultColor = 'red';
