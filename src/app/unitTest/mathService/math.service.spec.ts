@@ -1,6 +1,15 @@
-describe("MathService", () => {
-  it('should work', () => {
+import { LoggerService } from "src/app/services/logger.service";
+import { MathService } from "./math.service";
+
+fdescribe("MathService", () => {
+  it('should add two numbers', () => {
     // Todo : Test if the service is well instanciated
-    expect(1).toBe(1);
+    // Arrange
+    const logger = new LoggerService();
+    const mathService = new MathService(logger);
+    //Act
+    const result = mathService.add(2,3);
+    //Assert
+    expect(result).toBe(5);
   })
 });
