@@ -8,4 +8,6 @@ export class LoggerService {
     console.log('From Logger Service :');
     console.log(something);
   }
+  f() {}
+  g() {}
 }
